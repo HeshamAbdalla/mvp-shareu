@@ -6,14 +6,14 @@
 // You will need to set these on the server you deploy to.
 
 module.exports = {
-  DOMAIN:           'http://localhost:9000',
+  DOMAIN:           'https://bestdressed.herokuapp.com',
   SESSION_SECRET:   'meanApp-secret',
 
-  FACEBOOK_ID:      'app-id',
-  FACEBOOK_SECRET:  'secret',
+  FACEBOOK_ID:      '265761403819395',
+  FACEBOOK_SECRET:  'dc128cb274a8fb8b5150b82df23753cc',
 
-  TWITTER_ID:       'app-id',
-  TWITTER_SECRET:   'secret',
+  TWITTER_ID:       '2339201730',
+  TWITTER_SECRET:   'bM0MlIkP94sVQCEscopCkjvMKoOX3uF3W0ahAGNuj95BLkJBqd',
 
   keys:{
     access: 'AKIAINZITVNGQBZ7GPHA',
