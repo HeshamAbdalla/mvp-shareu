@@ -2,11 +2,11 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
-exports.list = function(ur, cb) {
+exports.list = function(url, cb) {
   request(url, function(err, res, body){
     if(err){
       cb({
-        error: err
+        err: err
       });
     }
     if(!err){

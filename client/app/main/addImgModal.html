@@ -17,8 +17,21 @@
           <div class="spinner" ng-show="loading">
             <img src="assets/images/spinner.gif"/>
           </div>
+          <div class="col-md-6" id="alert"></div>
+          <div class="listing" ng-show="showScrapeDetails">
+            <div class="form-group">
+              <div class="row listing-description"><label for="description" class="col-xs-12">Description</label></div>
+              <textarea class="form-control" rows="3" ng-model="look.description"></textarea>
+              </div>
+              <div class="form-group">
+                <div class="listing-img">
+                  <img src="{{look.imgThumb}}" class="img img-thumbnail img-responsive"/>
+                </div>
+              </div>
+            </div>
+            <button type="submit">Upload</button>
+          </div>
         </form>
-
       </div>
     </div>
 
