@@ -13,17 +13,17 @@ exports.list = function(ur, cb) {
       var $ = cheerio.load(body);
       var pin = {};
       var $url = url;
-      var $img = $('.heightContainer img').attr('src');// get images from pinterest
-      var $desc = $('.heightContainer img').attr('alt');// get description of the image
+      var $img = $('.post-image img').attr('src');// get images from pinterest
+      var $desc = $('.post-image img').attr('alt');// get description of the image
       console.log($img + 'image url');
 
-      var pin = {
+      var imgur = {
         img: $img,
         url: $url,
         desc: $desc
       }
       // res with json obj
-      cb(pin);
+      cb(imgur);
     }
   })
 }
