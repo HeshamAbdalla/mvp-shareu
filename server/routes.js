@@ -11,6 +11,7 @@ var path = require('path');
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/look' require('./api/look'));
   app.use('/api/users', require('./api/user'));
   app.use('/auth', require('./auth'));
   app.post('/forgotpassword', require('./forgotpassword').reset);
