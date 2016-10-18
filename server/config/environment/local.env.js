@@ -6,7 +6,7 @@
 // You will need to set these on the server you deploy to.
 
 module.exports = {
-  DOMAIN:           'https://bestdressed.herokuapp.com',
+  DOMAIN:           'http://localhost:9000',
   SESSION_SECRET:   'meanApp-secret',
 
   FACEBOOK_ID:      '265761403819395',
