@@ -4,6 +4,39 @@
 .navbar-inverse .navbar-logo {
   width: 140px;
 }
+.nav {
+  list-style: none;
+  margin-top: 25px;
+}
+.nav > li {
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  padding: 8px 0;
+  color: #323232;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 90%;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  color: #6d250e;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #e67e22;
+  transition: border-bottom 0.2s, color 0.2s;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #6d250e;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #e67e22;
+  transition: border-bottom 0.2s, color 0.2s;
+  background-color: transparent;
+}
 .navbar-brandi {
   float: left;
   padding: 0 15px;
@@ -11,6 +44,11 @@
   line-height: 20px;
   height: 50px;
 }
+.navbar-inverse {
+  background-color: transparent;
+  border: none;
+}
+
 .gravatar-image {
   margin-top: 5px;
   margin-right: 5px;
