@@ -5,9 +5,9 @@
   .module('app')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state','$modal','$http', 'Auth'];
+  MainCtrl.$inject = ['$scope', '$state','$modal','looksAPI','scrapeAPI', 'Auth'];
 
-  function MainCtrl($scope, $state, $modal, $http, Auth) {
+  function MainCtrl($scope, $state, $modal, looksAPI,scrapeAPI, Auth) {
     $scope.user = Auth.getCurrentUser();
     $scope.look = {}
     $scope.scrapePostForm = true;
@@ -28,10 +28,10 @@
     $scope.$watch('look.link', function(newVal, oldVal){
       if(newVal.length > 5) {
         $scope.loading = true;
-
-        $http.post('/api/links/scrape',{
+        var link = {
           url: $scope.look.link
-        })
+        };
+        scrapeAPI.getScrapeDetails(link)
         .then(function(data){
           console.log(data);
           $scope.showScrapeDetails = true;
@@ -62,12 +62,13 @@
         name: $scope.user.name,
         _creator: $scope.user._id
       }
-      $http.post('/api/look/scrapeUpload', look)
+      looksAPI.createScrapeLook(look)
       .then(function(data){
         $scope.showScrapeDetails = false;
         $scope.gotScrapeResults = false;
         $scope.look.title = "";
         $scope.look.link = "";
+        $scope.looks.splice(0,0, data.data);
         console.log(data);
 
       })

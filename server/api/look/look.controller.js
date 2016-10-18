@@ -7,7 +7,7 @@
   exports.scrapeUpload = function(req, res) {
     var random = utils.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-    utils.downloadURI(req.body.image, '../client/assets/images/uploads/'+ random +'.jpg', function(filename){
+    utils.downloadURI(req.body.image, '../client/assets/images/uploads/' + random + '.jpg', function(filename){
       console.log('done')
 
     var newLook = new Look();
@@ -25,9 +25,8 @@
         console.log('error saving newLook');
       } else {
         console.log(item);
-        res.status(200)
-        res.json(item);
+        res.status(200).json(item);
       }
       });
     });
-  };
+  }
