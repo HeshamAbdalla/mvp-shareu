@@ -5,7 +5,7 @@
     request(url)
     .pipe(fs.createWriteStream(filename))
     .on('close',function(){
-      callbackb(filename);
+      callback(filename);
       console.log(filename);
     });
   }

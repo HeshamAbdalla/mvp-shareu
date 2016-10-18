@@ -10,6 +10,7 @@
   function MainCtrl($scope, $state, $modal, looksAPI,scrapeAPI, Auth) {
     $scope.user = Auth.getCurrentUser();
     $scope.look = {}
+    $scope.looks = [];
     $scope.scrapePostForm = true;
     $scope.uploadLookTitle = true;
     $scope.uploadLookForm = false;
