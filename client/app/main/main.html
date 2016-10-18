@@ -1,0 +1,14 @@
+<div class="container">
+  <div id="searchFilterWrap">
+    <form id="searchForm">
+      <input type="text" class="searchBox" placeholder="Search" ng-model="searchTxt" ng-mode-options="{debounce: 500}"/>
+    </form>
+    <div class="row">
+      <div class="sortByWrap">
+        Sort By: <li class="fa fa-calendar" ng-click="sortByTime()"></i> <i class="fa fa-thumbs-up" ng-click="sortByLikes()"></i>
+          <button class="btn btn-primary add-img-btn" data-animation="am-fade-and-scale" data-placement="center" data-template-url="app/main/addImgModal.html" bs-modal="showModal">Add</button>
+      </div>
+    </div>
+  </div>
+
+</div>
