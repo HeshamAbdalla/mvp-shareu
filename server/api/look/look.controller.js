@@ -5,15 +5,15 @@
   var utils = require('../../utils/utils.js');
 
   exports.scrapeUpload = function(req, res) {
-    var random = utlis.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    var random = utils.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-    utils.downloadURI(req.body.image, '../client/assets/images/uploads/'+ random +'.png', function(filename){
+    utils.downloadURI(req.body.image, '../client/assets/images/uploads/'+ random +'.jpg', function(filename){
       console.log('done')
-    });
+
     var newLook = new Look();
     newLook.title = req.body.title;
     newLook.email = req.body.email;
-    newLook.linkURL = req.body.link;
+    newLook.linkURL = req.body.linkURL;
     newLook.description = req.body.description;
     newLook.userName = req.body.name;
     newLook._creator = req.body._creator;
@@ -24,8 +24,10 @@
       if(err) {
         console.log('error saving newLook');
       } else {
-        res.status(200);
+        console.log(item);
+        res.status(200)
         res.json(item);
       }
+      });
     });
   };

@@ -14,7 +14,7 @@ var LookSchema = new Schema({
     type: String
   }],
   _creator: {
-    type: Schema.objectId,
+    type: Schema.ObjectId,
     ref: 'User'
   },
   email: String,
