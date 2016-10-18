@@ -49,14 +49,14 @@ var all = {
   },
 
   facebook: {
-    clientID:     process.env.FACEBOOK_ID || 'id',
-    clientSecret: process.env.FACEBOOK_SECRET || 'secret',
+    clientID:     process.env.FACEBOOK_ID || '265761403819395',
+    clientSecret: process.env.FACEBOOK_SECRET || 'dc128cb274a8fb8b5150b82df23753cc',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
   },
 
   twitter: {
-    clientID:     process.env.TWITTER_ID || 'id',
-    clientSecret: process.env.TWITTER_SECRET || 'secret',
+    clientID:     process.env.TWITTER_ID || '	2339201730',
+    clientSecret: process.env.TWITTER_SECRET || 'bM0MlIkP94sVQCEscopCkjvMKoOX3uF3W0ahAGNuj95BLkJBqd',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
   },
 
