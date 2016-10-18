@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server/app.js",
   "scripts": {
-    "start": "node serve/app.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
