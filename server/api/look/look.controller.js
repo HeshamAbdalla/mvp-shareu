@@ -3,7 +3,20 @@
   var Look = require('./look.model');
   var path = require('path');
   var utils = require('../../utils/utils.js');
-
+  exports.allImages = function(req, res) {
+    Look.find({}).sort({
+      createTime: -1
+    }).exec(function(err, images){
+      if(err) {
+        return handleError(res, err);
+      }
+      if(!images) {
+        return res.send(404);
+      }
+      console.log(images)
+      return res.status(200).json(images);
+    })
+  }
   exports.scrapeUpload = function(req, res) {
     var random = utils.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
@@ -29,4 +42,8 @@
       }
       });
     });
+  }
+  //ERROR FUNCTION
+  function handleError(res, err) {
+    return res.send(500, err);
   }

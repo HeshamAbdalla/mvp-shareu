@@ -6,5 +6,5 @@ var router = express.Router();
 var auth = require('../../auth/auth.service')
 
 router.post('/scrapeUpload', auth.isAuthenticated(), controller.scrapeUpload);
-
+router.get('/getAllImages', controller.allImages);
 module.exports = router;

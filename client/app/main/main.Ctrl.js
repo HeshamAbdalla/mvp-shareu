@@ -5,18 +5,35 @@
   .module('app')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state','$modal','looksAPI','scrapeAPI', 'Auth'];
+  MainCtrl.$inject = ['$scope', '$state','$modal','$alert','looksAPI','scrapeAPI', 'Auth'];
 
-  function MainCtrl($scope, $state, $modal, looksAPI,scrapeAPI, Auth) {
+  function MainCtrl($scope, $state, $modal,$alert,looksAPI,scrapeAPI, Auth) {
     $scope.user = Auth.getCurrentUser();
-    $scope.look = {}
-    $scope.looks = [];
+    $scope.look = {};
+    $scope.images = [];
     $scope.scrapePostForm = true;
     $scope.uploadLookTitle = true;
     $scope.uploadLookForm = false;
     $scope.showScrapeDetails = false;
     $scope.gotScrapeResults = false;
     $scope.loading = false;
+
+    var success = $alert({
+      title: 'Success!',
+      content: 'New Image added',
+      placement: 'top-right',
+      container: '#alertContainer',
+      type: 'success',
+      duration: 8
+    });
+    var fail = $alert({
+      title: 'Warning',
+      content: 'Your image has not been saved',
+      placement: 'top-right',
+      container: '#alertContainer',
+      type: 'warning',
+      duration: 8
+    });
 
     var myModal = $modal({
       scope: $scope,
@@ -26,6 +43,12 @@
     $scope.showModal = function(){
       myModal.$promise.then(myModal.show);
     }
+    looksAPI.getAllImages()
+    .then(function(data){
+      console.log(data);
+      $scope.images = data.data;
+    })
+
     $scope.$watch('look.link', function(newVal, oldVal){
       if(newVal.length > 5) {
         $scope.loading = true;
@@ -65,17 +88,17 @@
       }
       looksAPI.createScrapeLook(look)
       .then(function(data){
+        success.show();
         $scope.showScrapeDetails = false;
         $scope.gotScrapeResults = false;
         $scope.look.title = "";
         $scope.look.link = "";
-        $scope.looks.splice(0,0, data.data);
+        $scope.images.splice(0,0, data.data);
         console.log(data);
-
       })
       .catch(function(){
         console.log('error posting > Upload');
-        console.log(look);
+        fail.show();
         $scope.showScrapeDetails = false;
       });
     }

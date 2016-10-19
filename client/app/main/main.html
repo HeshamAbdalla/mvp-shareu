@@ -1,7 +1,7 @@
 <div class="container">
   <div id="searchFilterWrap">
     <form id="searchForm">
-      <input type="text" class="searchBox" placeholder="Search" ng-model="searchTxt" ng-mode-options="{debounce: 500}"/>
+      <input type="text" id="searchBox" placeholder="Search" ng-model="searchTxt" ng-model-options="{debounce: 500}"/>
     </form>
     <div class="row">
       <div class="sortByWrap">
@@ -10,5 +10,37 @@
       </div>
     </div>
   </div>
-
+  <!-- Show All Looks Pre Angular Grid-->
+      <div class="panel panel-default">
+             <div class="panel-body">
+              <div class="row">
+              <div class="col-lg-12">
+                <h1 class="page-header">
+                <span class="label label-info">{{ images.length }}</span> Pictures</h1>
+                <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6"
+                      ng-repeat="look in images">
+                  <li>
+                  <span class="input-group-addon">
+                  <a href="#"
+                       ng-click="deleteLook(look)">
+                       <span class="glyphicon glyphicon-remove pull-left"></span></a>
+                  <a ui-sref="look ({ lookId: look._id })"
+                       data-title="{{look.title}}"
+                       data-animation="am-flip-x"
+                       bs-tooltip>{{ look.title }}</a></li>
+                  <li>
+                  <span class="input-group-addon listing-image">
+                  <a ui-sref="look ({ lookId: look._id })">
+                    <img class="thumbnail img-responsive"
+                            ng-src="{{ look.image }}"></a></span></li>
+                    <li>
+                      <span class="input-group-addon">
+                          <p>{{ look.userName }}</p>
+                      </span>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 </div>
