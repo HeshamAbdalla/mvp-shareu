@@ -43,6 +43,31 @@
       });
     });
   }
+  //uploading images -- server
+  exports.upload = function(req, res) {
+    var newLook = new Look();
+    var fileimage = req.middlewareStorage.fileimage;
+
+    newLook.image = '/assets/images/uploads' + fileimage;
+    newLook.email = req.body.email;
+    newLook.linkURL = req.body.linkURL;
+    newLook.title = req.body.title;
+    newLook.description = req.body.description;
+    newLook.userName = req.body.name;
+    newLook._creator = req.body._creator;
+    newLook.createTime = Date.now();
+    newLook.upVotes = 0;
+    newLook.image = filename.slice(9);
+    newLook.save(function(err, item){
+      if(err) {
+        console.log('error saving newLook');
+      } else {
+        console.log(item);
+        res.status(200).json(item);
+      }
+      });
+  };
+
   //ERROR FUNCTION
   function handleError(res, err) {
     return res.send(500, err);

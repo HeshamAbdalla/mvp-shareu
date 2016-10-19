@@ -5,18 +5,21 @@
   .module('app')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state','$modal','$alert','looksAPI','scrapeAPI', 'Auth'];
+  MainCtrl.$inject = ['$scope', '$state','$modal','$alert','looksAPI','scrapeAPI','Upload' 'Auth'];
 
-  function MainCtrl($scope, $state, $modal,$alert,looksAPI,scrapeAPI, Auth) {
+  function MainCtrl($scope, $state, $modal, $alert, looksAPI, scrapeAPI, Upload, Auth) {
     $scope.user = Auth.getCurrentUser();
     $scope.look = {};
     $scope.images = [];
+
     $scope.scrapePostForm = true;
-    $scope.uploadLookTitle = true;
-    $scope.uploadLookForm = false;
     $scope.showScrapeDetails = false;
     $scope.gotScrapeResults = false;
     $scope.loading = false;
+
+    $scope.pickPreview = true;
+    $scope.uploadLookTitle = true;
+    $scope.uploadLookForm = false;
 
     var success = $alert({
       title: 'Success!',

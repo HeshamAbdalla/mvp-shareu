@@ -9,6 +9,7 @@ var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var compression = require('compression');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var errorHandler = require('errorhandler');
@@ -32,6 +33,21 @@ module.exports = function(app) {
   }));
   app.use(bodyParser.json());
   app.use(methodOverride());
+  app.use(multer({
+    dest:'./client/assets/images/uploads',
+    rename: function(fd, fm) {
+      return fm + Date.now();
+    },
+    onFileUploadStart: function(file) {
+      console.log(file.originalname + 'Processing...');
+    },
+    onFileUploadComplete: function(file, req, res) {
+      var fileimage = file.name;
+      req.middlewareStorage = {
+        fileimage: fileimage
+      }
+    }
+  }))
   app.use(cookieParser());
   app.use(passport.initialize());
 
