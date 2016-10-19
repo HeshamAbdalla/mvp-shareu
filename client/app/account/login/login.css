@@ -27,11 +27,8 @@ $btnTextAlt:                        #000;
     margin: 0 auto;
 }
 .signinForm {
-  width: 340px;
+  width: 60px;
   margin: 0 auto;
-  border: 1px solid #bdbdbd;
-  box-shadow: 0 1px 1px 0 grey;
-  border-radius: 8px 8px;
 }
 .input {
   margin: 15px 0;
@@ -42,10 +39,10 @@ $btnTextAlt:                        #000;
   margin: 0 auto;
 }
 .login-button {
-  background-color: #083858;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  width: 60%;
+  margin: 0 auto;
   color: #fff;
+  padding: 0;
 }
 .login-button a {
   color: inherit;
@@ -56,12 +53,10 @@ $btnTextAlt:                        #000;
   background-color: #ccc;
   color: #083858;
 }
-.panel-login {
-  //border-radius: 8px; 
-}
+
 .panelintro {
-  border: 2px solid #083858; 
-  border-radius: 8px; 
+  border: 2px solid #083858;
+  border-radius: 8px;
 }
 .panel, .panel-heading {
   border-bottom: 0;

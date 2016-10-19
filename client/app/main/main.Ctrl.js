@@ -5,7 +5,7 @@
   .module('app')
   .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state','$modal','$alert','looksAPI','scrapeAPI','Upload' 'Auth'];
+  MainCtrl.$inject = ['$scope', '$state','$modal','$alert','looksAPI','scrapeAPI','Upload', 'Auth'];
 
   function MainCtrl($scope, $state, $modal, $alert, looksAPI, scrapeAPI, Upload, Auth) {
     $scope.user = Auth.getCurrentUser();
@@ -46,6 +46,13 @@
     $scope.showModal = function(){
       myModal.$promise.then(myModal.show);
     }
+    
+    $scope.showUploadForm = function() {
+      $scope.uploadLookForm = true;
+      $scope.scrapePostForm = false;
+      $scope.uploadLookForm = false;
+    }
+
     looksAPI.getAllImages()
     .then(function(data){
       console.log(data);
@@ -103,6 +110,35 @@
         console.log('error posting > Upload');
         fail.show();
         $scope.showScrapeDetails = false;
+      });
+    }
+    $scope.uploadPic = function(file) {
+      Upload.upload({
+        url: 'api/look/upload',
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        data:{
+          file: file,
+          title: $scope.look.title,
+          description: $scope.look.description,
+          email: $scope.user.email,
+          name:  $scope.user.name,
+          linkURL: $scope.look._id,
+          _creator: $scope.user._id
+        }
+      }).then(function(res){
+        $scope.images.splice(0,0, res.data);
+        $scope.look.title = "";
+        $scope.look.description = "";
+        $scope.picFile = "";
+        $scope.pickPreview = false;
+        success();
+      },function(res){
+        fail();
+      }, function(prog){
+        var progressPer = parseInt(100.0 * prog.loaded / prog.total); //NG-FILE-UPLOAD FOLLOW-FILE-PROGRESS
+        console.log('progress:'+ progressPer + '%' + prog.config.data.file.name )
       });
     }
   }
